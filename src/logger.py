@@ -2,15 +2,12 @@ import logging
 import os
 from datetime import datetime
 
-# Create logs folder path
-logs_folder = os.path.join(os.getcwd(), "logs")
-os.makedirs(logs_folder, exist_ok=True)
+LOG_FILE=f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+logs_path=os.path.join(os.getcwd(),"logs",LOG_FILE)
+os.makedirs(logs_path,exist_ok=True)
 
-# Generate unique log file name
-LOG_FILE = f"{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.log"
+LOG_FILE_PATH=os.path.join(logs_path,LOG_FILE)
 
-# Final log file path
-LOG_FILE_PATH = os.path.join(logs_folder, LOG_FILE)
 
 logging.basicConfig(
     filename=LOG_FILE_PATH,
@@ -20,4 +17,6 @@ logging.basicConfig(
 )
 
 
+if __name__=="__main__":
+    logging.info("Logging has started")
    
